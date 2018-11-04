@@ -1,6 +1,10 @@
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN
+#endif
 #include <Windows.h>
 #include <string>
-#include <stdlib.h>  
+//#include <stdlib.h>
+#include "resource.h"
 
 static std::string window_class("from_scratch");
 static std::string title("Win32 Guided Tour Application");
@@ -24,7 +28,7 @@ int CALLBACK WinMain(
 	wcex.cbWndExtra = 0;
 	wcex.hInstance = hInstance;
 	wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_APPLICATION));
-	wcex.hCursor = LoadCursor(NULL, IDC_ARROW);
+	wcex.hCursor = LoadCursor(hInstance, MAKEINTRESOURCE(IDC_CURSOR_LOL));
 	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
 	wcex.lpszMenuName = NULL;
 	wcex.lpszClassName = window_class.c_str();
@@ -57,7 +61,7 @@ int CALLBACK WinMain(
 		title.c_str(),
 		WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT, CW_USEDEFAULT,
-		300, 150,
+		500, 300,
 		NULL,
 		NULL,
 		hInstance,
